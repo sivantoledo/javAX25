@@ -1,4 +1,4 @@
-package sivantoledo.ax25;
+package sivantoledo.radiocontrol;
 
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;

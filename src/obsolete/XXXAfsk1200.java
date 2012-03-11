@@ -17,9 +17,14 @@
  *      along with this program; if not, write to the Free Software
  *      Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-package sivantoledo.ax25;
+package obsolete;
 
 import java.util.Arrays;
+
+import sivantoledo.ax25.Afsk1200Filters;
+import sivantoledo.ax25.Filter;
+import sivantoledo.ax25.Packet;
+import sivantoledo.ax25.PacketHandler;
 
 public class XXXAfsk1200 implements XXXHalfduplexSoundcardClient {
 /*	

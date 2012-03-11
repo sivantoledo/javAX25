@@ -18,7 +18,7 @@
  *      along with this program; if not, write to the Free Software
  *      Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-package sivantoledo.ax25;
+package sivantoledo.ax25test;
 
 import java.io.BufferedReader;
 
@@ -42,6 +42,15 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 import javax.sound.sampled.*;
+
+import sivantoledo.ax25.Afsk1200Modulator;
+import sivantoledo.ax25.Afsk1200MultiDemodulator;
+import sivantoledo.ax25.Packet;
+import sivantoledo.ax25.PacketDemodulator;
+import sivantoledo.ax25.PacketHandler;
+import sivantoledo.ax25.Soundcard;
+import sivantoledo.radiocontrol.SerialTransmitController;
+import sivantoledo.radiocontrol.TransmitController;
 
 public class Test implements PacketHandler {
 	

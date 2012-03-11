@@ -18,7 +18,7 @@
  *      Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package sivantoledo.ax25;
+package obsolete;
 
 public interface XXXHalfduplexSoundcardClient {
 	

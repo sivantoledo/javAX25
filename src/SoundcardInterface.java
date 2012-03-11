@@ -13,6 +13,8 @@ import com.ae5pl.nsutil.*;
 
 import javax.sound.sampled.*;
 import sivantoledo.ax25.*;
+import sivantoledo.radiocontrol.SerialTransmitController;
+import sivantoledo.radiocontrol.TransmitController;
 
 /**
  * An interface to Sivan Toledo's sound-card modem for javAPRSIGate.

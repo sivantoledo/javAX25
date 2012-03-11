@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-import sivantoledo.ax25.TransmitController;
+import sivantoledo.radiocontrol.TransmitController;
 
 import com.ae5pl.nsutil.*;
 
