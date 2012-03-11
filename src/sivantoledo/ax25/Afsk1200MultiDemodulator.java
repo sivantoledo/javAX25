@@ -45,7 +45,7 @@ public class Afsk1200MultiDemodulator implements PacketDemodulator {
 	private int last_demod, d0_count, d6_count, both_count; 
 	public void handlePacket(byte[] bytes, int d) {
 	//public void handlePacket(byte[] bytes) {
-		if (last!=null && d != last_demod && Arrays.equals(last, bytes)) {
+		if (last!=null && d != last_demod && java.util.Arrays.equals(last, bytes)) {
 			//&& sample_count <= last_sample_count + max_sample_delay ) {
 			dup_count++;
 			//System.err.printf("Duplicate, %d so far\n",dup_count);

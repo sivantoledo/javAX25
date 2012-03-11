@@ -11,7 +11,10 @@ public class Arrays {
 	}
 	public static String[] copyOfRange(String[] src, int from, int to) {
 		String[] dest = new String[to-from];
-		System.arraycopy(src, from, dest, 0, to-from);
+		//System.out.println(">> "+from+" , "+to+" len="+src.length+"  new len="+(to-from));
+		int len = to-from;
+		if (len > src.length) len = src.length - from;
+		System.arraycopy(src, from, dest, 0, len);
 		return dest;
 	}
 	public static String[] copyOf(String[] src, int count) {
