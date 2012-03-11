@@ -21,7 +21,7 @@
  */
 package sivantoledo.ax25;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 public class Afsk1200MultiDemodulator implements PacketDemodulator {
 
