@@ -1,0 +1,9 @@
+<?xml version="1.0" ?> 
+ <project name="javAX25" basedir="." default="build-jars">
+ <target name="build-jars">
+   <jar jarfile="javAX25.jar" basedir="bin" includes="sivantoledo/ax25/**"/> 
+  </target>
+ <target name="clean">
+  <delete dir="bin" failonerror="false" /> 
+  </target>
+  </project>
