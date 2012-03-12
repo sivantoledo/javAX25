@@ -18,14 +18,13 @@
  *      Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package sivantoledo.ax25;
+package sivantoledo.soundcard;
 
-public interface SoundcardProducer {
+public interface SoundcardConsumer {
 	
 	//public void addSamples(float[] s) {
 	//	addSamples(s,s.length);
 	//}
 
-	public abstract float[] getTxSamplesBuffer();
-	public abstract int getSamples();
+	public abstract void addSamples(float[] s, int n);
 }

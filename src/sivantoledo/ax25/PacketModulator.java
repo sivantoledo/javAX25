@@ -19,6 +19,8 @@
  */
 package sivantoledo.ax25;
 
+import sivantoledo.soundcard.SoundcardProducer;
+
 public interface PacketModulator extends SoundcardProducer {
 	public float[] getTxSamplesBuffer();
 	public int getSamples();

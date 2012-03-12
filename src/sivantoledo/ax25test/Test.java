@@ -48,9 +48,9 @@ import sivantoledo.ax25.Afsk1200MultiDemodulator;
 import sivantoledo.ax25.Packet;
 import sivantoledo.ax25.PacketDemodulator;
 import sivantoledo.ax25.PacketHandler;
-import sivantoledo.ax25.Soundcard;
 import sivantoledo.radiocontrol.SerialTransmitController;
 import sivantoledo.radiocontrol.TransmitController;
+import sivantoledo.sampledsound.Soundcard;
 
 public class Test implements PacketHandler {
 	

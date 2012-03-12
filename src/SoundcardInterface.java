@@ -31,7 +31,7 @@ final public class SoundcardInterface extends TNCConnectThread
 	//sivantoledo.ax25.Afsk1200 afsk;
 	sivantoledo.ax25.Afsk1200Modulator modulator;
 	sivantoledo.ax25.PacketDemodulator demodulator;
-	sivantoledo.ax25.Soundcard sc;
+	sivantoledo.sampledsound.Soundcard sc;
 		
 	private int TXDelay = 20;          // KISS specification default is 50 (= 500ms)
 	private int Persist = 255;   // KISS specification default is 63 (p = 0.25)
@@ -127,7 +127,7 @@ final public class SoundcardInterface extends TNCConnectThread
 			}
 
 			
-	  	sc   = new sivantoledo.ax25.Soundcard(rate, soundin, soundout, latency_ms, 
+	  	sc   = new sivantoledo.sampledsound.Soundcard(rate, soundin, soundout, latency_ms, 
 	  	                                      demodulator, modulator);
 			new Thread(this, "SoundInterface Read").start();
 		}

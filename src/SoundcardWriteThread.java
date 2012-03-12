@@ -7,7 +7,7 @@ import com.ae5pl.nsutil.*;
 
 final class SoundcardWriteThread extends TNCWriteThread {
 	//private sivantoledo.ax25.Afsk1200 afsk;
-	private sivantoledo.ax25.Soundcard sc;
+	private sivantoledo.sampledsound.Soundcard sc;
 
 	private sivantoledo.ax25.PacketDemodulator demodulator;
 	private sivantoledo.ax25.PacketModulator modulator;
@@ -20,7 +20,7 @@ final class SoundcardWriteThread extends TNCWriteThread {
 	SoundcardWriteThread(//sivantoledo.ax25.Afsk1200 afsk,
 			sivantoledo.ax25.PacketDemodulator demodulator,
 			sivantoledo.ax25.PacketModulator modulator,
-			sivantoledo.ax25.Soundcard sc,
+			sivantoledo.sampledsound.Soundcard sc,
 			double persistence, int slot_time,
 			TransmitController ptt
       ) {
