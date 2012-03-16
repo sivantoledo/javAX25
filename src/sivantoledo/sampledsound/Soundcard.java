@@ -113,8 +113,12 @@ public class Soundcard {
 			}
 			lis = AudioSystem.getMixer(mi).getTargetLineInfo();
 			for (Line.Info li: lis) {
-				if (TargetDataLine.class.equals(li.getLineClass()))
+				if (TargetDataLine.class.equals(li.getLineClass())) {
 				  System.out.println("  input : "+name);
+				  
+				}
+				
+				
 				//System.out.println("    input device = "+li.getLineClass());
 				//System.out.println("    isInstance = "+li.getLineClass().isInstance(TargetDataLine.class));
 				//System.out.println("    isInstance = "+));
@@ -150,13 +154,14 @@ public class Soundcard {
 		  	if (!display_audio_level) continue;
 		  	j ++;
 	  		//System.out.printf("j=%d\n",j);			  	
-		  	if (f[i] > max) max = f[i];
-		  	if (f[i] < min) min = f[i];
+		  	//if (f[i] > max) max = f[i];
+		  	//if (f[i] < min) min = f[i];
 		  	if (j == rate) {
-		  		System.err.printf("Audio in range [%f, %f]\n",min,max);
+		  		//System.err.printf("Audio in range [%f, %f]\n",min,max);
+		  		System.err.printf("Audio level %d\n",consumer.peak());
 		  		j = 0;
-		  		min =  1.0f;
-		  		max = -1.0f;
+		  		//min =  1.0f;
+		  		//max = -1.0f;
 		  	}
 	  	}
 	  	consumer.addSamples(f,rv/2);
@@ -194,6 +199,11 @@ public class Soundcard {
 			System.err.println("Sound device not found (or is not an input device): "+mixer);
 			return;
 		}
+		
+		//Control[] controls = tdl.getControls();
+		//for (Control c: controls) {
+		//	System.out.println("  Control: +"+c.getType().getClass());
+		//}
 		
 		int buffer_size_in_samples = (int) Math.round(latency_ms * ((double) rate / 1000.0));
 		try {

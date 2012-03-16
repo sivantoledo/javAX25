@@ -1,21 +1,35 @@
 <?xml version="1.0"?>
 <project name="javAX25" basedir="." default="build-jars" >
-<target name="build-jars" >
+<target name="compile" >
 <mkdir dir="bin" />
 
 <javac destdir="bin"
 deprecation="false"
 optimize="true"
-debug="true" >
+debug="true" 
+fork="yes"
+	executable="c:\Program Files\Java\jdk1.6.0_24\bin\javac"
+	>
 
-<classpath path="/usr/share/java/RXTXcomm.jar" />
-<src path="src/sivantoledo" />
+<classpath path="RXTXcomm.jar;javAPRSSrvr.jar" />
+<src path="src" />
 <include name="**/*.java" />
 
 </javac>
-<jar jarfile="bin/javAX25lib.jar" basedir="bin" includes="sivantoledo/ax25/**"/>
-<jar jarfile="bin/javAX25all.jar" basedir="bin" includes="sivantoledo/**"/>
 </target>
+
+<target name="build-jars" depends="compile">
+  <jar jarfile="bin/javAX25lib.zip">
+    <fileset dir="bin" includes="sivantoledo/ax25/**"/>
+    <fileset dir="bin" includes="sivantoledo/soundcard/**"/>
+  </jar>
+
+  <jar jarfile="bin/javAX25all.zip">
+    <fileset dir="bin" includes="**/*.class" excludes="obsolete/**" />
+   </jar>
+</target>
+	
+
 <target name="clean">
 <delete dir="bin" failonerror="false" />
 </target>

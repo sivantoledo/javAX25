@@ -23,7 +23,7 @@ package sivantoledo.ax25;
 
 //import java.util.Arrays;
 
-public class Afsk1200MultiDemodulator implements PacketDemodulator {
+public class Afsk1200MultiDemodulator extends PacketDemodulator {
 
 	private class InnerHandler implements PacketHandler {
 		int d;
@@ -92,13 +92,14 @@ public class Afsk1200MultiDemodulator implements PacketDemodulator {
 	//private int max_sample_delay;
 
 	public Afsk1200MultiDemodulator(int sample_rate, PacketHandler h) throws Exception {
+  	super(sample_rate);
 		//this.sample_rate = sample_rate;
 		this.h = h;
 		//max_sample_delay = (10 * 8 * sample_rate) / 1200; // a 10 byte delay
 	  d0 = new Afsk1200Demodulator(sample_rate,1,0,new InnerHandler(0));
 	  d6 = new Afsk1200Demodulator(sample_rate,1,6,new InnerHandler(6));
 	}
-	public void addSamples(float[] s, int n) {
+	protected void addSamplesPrivate(float[] s, int n) {
 		sample_count += n;
 		d0.addSamples(s, n);
 		d6.addSamples(s, n);

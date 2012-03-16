@@ -21,7 +21,11 @@ package sivantoledo.ax25;
 
 import sivantoledo.soundcard.SoundcardConsumer;
 
-public interface PacketDemodulator extends SoundcardConsumer {
-	public void addSamples(float[] s, int n);
-	public boolean dcd();
+public abstract class PacketDemodulator extends SoundcardConsumer {
+	public PacketDemodulator(int sample_rate) {
+		super(sample_rate);
+	}
+
+	//public void addSamples(float[] s, int n);
+	public abstract boolean dcd();
 }

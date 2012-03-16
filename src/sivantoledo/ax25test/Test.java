@@ -269,7 +269,7 @@ public class Test implements PacketHandler {
 			else {
 				System.err.printf("Sample rates must match or lead to decimation by an integer!\n");
 				System.exit(1);				
-			}
+			} 
 			
 			byte[] raw = new byte[fmt.getFrameSize()];
 			float[] f = new float[1];
@@ -279,6 +279,14 @@ public class Test implements PacketHandler {
 			else
 		    bb = ByteBuffer.wrap(raw).order(ByteOrder.LITTLE_ENDIAN);
 			int j = 0;
+			int k = 0;
+			float scale = 0.0f;
+			switch (fmt.getSampleSizeInBits()){
+			case 32: scale = 1.0f / ((float) fmt.getChannels() * 2147483648.0f ); break;
+			case 16: scale = 1.0f / ((float) fmt.getChannels() *      32768.0f ); break;
+			case  8: scale = 1.0f / ((float) fmt.getChannels() *        256.0f ); break;
+			}
+			//System.out.printf("Format bits per sample = %d\n",fmt.getSampleSizeInBits());
 			while (true) {
 				try {
 					int n = ios.read(raw);
@@ -288,6 +296,7 @@ public class Test implements PacketHandler {
 					}
 					bb.rewind();
 					f[0] = 0.0f;
+					// we average over channels (stereo)
 					for (int i=0; i<fmt.getChannels(); i++) {
 						switch (fmt.getSampleSizeInBits()){
 						case 32: f[0] += (float) bb.getInt();   break;
@@ -298,12 +307,20 @@ public class Test implements PacketHandler {
 							System.exit(1);
 						}
 					}
+					f[0] = scale*f[0];
 					if (j==0) {
 						t.incSampleCount();
 						//afsk.addSamples(f, 1);
 						//afsk0.addSamples(f, 1);
 						//afsk6.addSamples(f, 1);
+						//if (f[0] > 32768.0f || f[0] < -32768.0f) System.out.printf("Weird short sample value %f\n", f[0]);
 						multi.addSamples(f, 1);
+						
+						k++;
+						if (k==rate) {
+							System.out.printf("peak level %d\n",multi.peak());
+							k=0;
+						}
 					}
 					j++;
 					if (j==decimation) j=0;

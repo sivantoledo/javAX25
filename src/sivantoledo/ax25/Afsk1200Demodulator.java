@@ -22,7 +22,7 @@ package sivantoledo.ax25;
 import java.util.Arrays;
 
 public class Afsk1200Demodulator 
-  implements PacketDemodulator
+  extends PacketDemodulator
   //implements HalfduplexSoundcardClient 
   {
   private float[] td_filter;
@@ -98,6 +98,7 @@ public class Afsk1200Demodulator
 	}
 
   public Afsk1200Demodulator(int sample_rate, int filter_length, int emphasis, PacketHandler h) throws Exception {
+  	super(sample_rate==8000 ? 16000 : sample_rate);
   	
   	if (sample_rate==8000) {
   		interpolate = true;
@@ -243,7 +244,7 @@ public class Afsk1200Demodulator
 	
 	private boolean vox_state = false; 
 	
-	public void addSamples(float[] s, int n) {
+	protected void addSamplesPrivate(float[] s, int n) {
 		//for (int i=0; i<n; i++) {
 		int i = 0;
 		while (i<n) {
